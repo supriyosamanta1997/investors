@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRONTEND</title>
+    <link rel="stylesheet" href="frontend.css">
+</head>
+<body>
+    <div id="container"></div>
+</body>
+</html>
+
+<script>
+    var investorArr= JSON.parse(localStorage.getItem("investors_Data"))
+    console.log(investorArr)
+    investorArr.forEach(function (elem){
+        var boxes=document.createElement("div")
+        boxes.setAttribute("id","card")
+        var investors_Img=document.createElement("img")
+        investors_Img.setAttribute("src",elem.investorsImg)
+        
+        var investors_Name=document.createElement("h2")
+        investors_Name.innerText=elem.investorsName
+
+        var investors_Role=document.createElement("p")
+        investors_Role.innerText=elem.investorsRole
+
+        var investors_Logo=document.createElement("img")
+        investors_Logo.setAttribute("src",elem.investorsLogo)
+        boxes.append(investors_Img,investors_Name,investors_Role,investors_Logo)
+        document.querySelector("#container").append(boxes)
+    })
+</script>
